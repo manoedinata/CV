@@ -28,6 +28,7 @@ website_dir = os.path.join(current_dir, 'website')
 output_dir = os.path.join(current_dir, 'docs')
 shutil.rmtree(output_dir) if os.path.exists(output_dir) else None
 os.makedirs(output_dir)
+shutil.copyfile(os.path.join(current_dir, '.nojekyll'), os.path.join(output_dir, '.nojekyll'))
 
 generated_dir = os.path.join(current_dir, 'generated')
 shutil.rmtree(generated_dir) if os.path.exists(generated_dir) else None
