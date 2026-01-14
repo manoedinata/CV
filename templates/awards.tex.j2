@@ -1,0 +1,7 @@
+{% for award in data.awards %}
+    \award
+    {<< award.title |  escape_tex >>}
+    {<< award.awarder |  escape_tex >>}
+    {<< award.summary |  escape_tex >>}
+    {<< award.date |  escape_tex >>}
+{% endfor %}

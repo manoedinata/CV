@@ -1,0 +1,15 @@
+\noindent
+{%- for project in data.projects -%}
+    \project
+    {<< project.name | escape_tex >>}
+    {<< project.startDate | escape_tex >>
+    {%- if project.endDate -%}
+        -- << project.endDate | escape_tex >>{%- endif -%}
+        }
+        {<< project.description | escape_tex >>}
+        {%- if project.url -%}
+            {<< project.url | escape_tex >>}
+        {%- else -%}
+            {}
+        {%- endif -%}
+    {%- endfor -%}

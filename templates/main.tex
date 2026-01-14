@@ -1,0 +1,76 @@
+\documentclass[a4paper,11pt]{paper}
+% \documentclass[a4paper,11pt]{article}
+
+% --- Packages ---
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[left=0.75in, right=0.75in, top=0.6in, bottom=0.6in]{geometry}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+% --- Formatting ---
+\geometry{margin=1.27cm}
+\setmainfont{Arial}
+\pagestyle{empty}
+\raggedright
+
+% Links Setup
+\hypersetup{
+    colorlinks=false, % for underlined links
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    urlbordercolor=black,
+    pdfborderstyle={/S/U/W 1} % Underline links with a 1pt line width
+}
+
+% Custom Section Heading
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{12pt}{6pt}
+
+\input{custom_commands/entry}
+\input{custom_commands/award}
+\input{custom_commands/project}
+
+% --- Document Starts Here ---
+\begin{document}
+
+% --- Header ---
+\begin{center}
+    \input{header}
+\end{center}
+
+% --- Summary ---
+\section{Summary}
+\noindent
+\input{summary}
+
+% --- Education ---
+\section{Education}
+\input{education}
+
+% --- Professional Experience ---
+\section{Professional Experience}
+\input{experience}
+
+% --- Projects ---
+\section{Projects}
+\input{projects}
+
+% --- Technical Skills ---
+\section{Technical Skills}
+\input{skills}
+
+% --- Leadership & Organization ---
+% \section{Leadership \& Organization}
+% \input{organizations}
+
+% --- Honors & Awards ---
+\section{Honors \& Awards}
+\input{awards}
+
+\end{document}

@@ -1,0 +1,13 @@
+{\Huge \textbf{ << data.basics.name >> }} \\ \vspace{4pt}
+% << data.basics.label >> \\ \vspace{4pt}
+<< data.basics.location >> \\
+\href{mailto:<< data.basics.email >>}{<< data.basics.email >>} |
+{% if data.basics.phone -%}
+    \href{tel:<< data.basics.phone >>}{<< data.basics.phone >>} |
+{% endif -%}
+\href{https://<< data.basics.url >>}{<< data.basics.url >>} \\
+{%- for profile in data.basics.profiles -%}
+    \href{https://<< profile.url >>}{<< profile.url >>}
+    {%- if not loop.last %} |
+    {% endif -%}
+{%- endfor -%}

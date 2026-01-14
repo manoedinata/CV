@@ -1,0 +1,22 @@
+{%- for job in data.work -%}
+    \entry
+    {
+    {%- if job.url -%}
+        \href{https://<< job.url >>}{<< job.name | escape_tex >>}
+    {%- else -%}
+        << job.name | escape_tex >>
+    {%- endif -%}
+    }                           % Name
+    { << job.location | escape_tex >> }                       % Location
+    { << job.position | escape_tex >> }                       % Title
+    { << job.startDate | escape_tex >> --
+    {%- if job.endDate -%}
+        << job.endDate | escape_tex >>
+    {%- else -%}
+        Present
+    {%- endif -%}
+    } % Date
+    {
+    {%- for detail in job.highlights -%}\item << detail | escape_tex>>{%- endfor -%}
+        }
+    {%- endfor -%}

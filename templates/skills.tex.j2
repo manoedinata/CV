@@ -1,0 +1,11 @@
+\noindent
+{%- for skill in data.skills -%}
+    \textbf{<< skill.name | escape_tex >>}:
+    {% for keyword in skill.keywords -%}
+        << keyword | escape_tex >>
+        {%- if not loop.last -%},
+        {% endif -%}
+    {%- endfor -%}
+    \\
+{%- endfor -%}
+% \vspace{6pt}

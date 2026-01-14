@@ -1,0 +1,16 @@
+\entry
+{%- for org in data.organization -%}
+    {<< org.name | escape_tex >>}
+    {<< org.location | escape_tex >>}
+    {<< org.position | escape_tex >>}
+    {<< org.startDate | escape_tex >> --
+    {%- if org.endDate -%}
+        << org.endDate | escape_tex >>
+    {%- else -%}
+        Present
+    {%- endif -%}
+    }
+    {
+    {%- for detail in org.highlights -%}\item << detail | escape_tex>>{%- endfor -%}
+        }
+    {%- endfor -%}

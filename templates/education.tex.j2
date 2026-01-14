@@ -1,0 +1,24 @@
+\noindent
+{%- for edu in data.education -%}
+    \entry
+    {<< edu.institution | escape_tex >>}
+    {<< edu.location | escape_tex >>}
+    {<< edu.area | escape_tex >>
+    {%- if edu.score -%}(Grade: << edu.score >>){%- endif -%}
+        }
+        {<< edu.startDate | escape_tex >> --
+        {%- if edu.endDate -%}
+            << edu.endDate | escape_tex >>
+        {%- else -%}
+            Present
+        {%- endif -%}
+        }
+        {%- if edu.courses -%}
+            {
+            {%- for detail in edu.courses -%}\item << detail | escape_tex>>{%- endfor -%}
+                }
+            {%- else -%}
+                {}
+            {%- endif -%}
+            {%- if not loop.last -%}\vspace{6pt}{%- endif -%}
+            {%- endfor -%}
