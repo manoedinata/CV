@@ -25,7 +25,7 @@ template_dir = os.path.join(current_dir, 'templates')
 website_dir = os.path.join(current_dir, 'website')
 
 
-output_dir = os.path.join(current_dir, 'output')
+output_dir = os.path.join(current_dir, 'docs')
 shutil.rmtree(output_dir) if os.path.exists(output_dir) else None
 os.makedirs(output_dir)
 

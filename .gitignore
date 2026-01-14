@@ -219,7 +219,7 @@ __marimo__/
 generated/
 
 # Output files
-output/
+docs/
 
 # Resume
 resume.html
