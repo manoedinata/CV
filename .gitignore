@@ -225,9 +225,9 @@ package.json
 generated/
 
 # Output files
-docs/
+# docs/
 
 # Resume
-resume.html
-resume.pdf
-resume.json
+# resume.html
+# resume.pdf
+# resume.json

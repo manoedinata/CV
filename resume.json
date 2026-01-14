@@ -1,0 +1,224 @@
+{
+  "basics": {
+    "name": "Hendra Manudinata",
+    "label": "Information Technology Undergraduate Student",
+    "image": "",
+    "email": "hendra@mdinata.my.id",
+    "phone": "",
+    "url": "mdinata.my.id",
+    "summary": "Undergraduate student majoring in Information Technology at Institut Teknologi Sepuluh Nopember (ITS). Creates innovative solutions with technology to solve real-world problems. Currently diving deeper into robotics and cyber security, honing skills in efficient programming technique, autonomous system, and security research.",
+    "location": "Surabaya, Indonesia",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "manoedinata",
+        "url": "linkedin.com/in/manoedinata"
+      },
+      {
+        "network": "GitHub",
+        "username": "manoedinata",
+        "url": "github.com/manoedinata"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "IRIS ITS",
+      "position": "Programmer / Research Assistant",
+      "url": "iris.its.ac.id",
+      "startDate": "2025-12",
+      "endDate": "",
+      "location": "Robotics Center, ITS Campus, Surabaya",
+      "highlights": [
+        "Developed object tracking software with image processing technique using OpenCV",
+        "Utilizing various approach to accurately measure an object distance in real-life based on camera image",
+        "Developing Neural Network system to predict the next robot's decision",
+        "Created autonomous robot system & nodes using ROS 2 \"Humble\" framework",
+        "Built robot monitoring website to control & analyze robot's movement & command using Vue.js, Express.js, and ROSBridge"
+      ]
+    },
+    {
+      "name": "Enpitsu CBT",
+      "position": "DevOps Engineer",
+      "url": "",
+      "startDate": "2024-01",
+      "endDate": "",
+      "location": "Bekasi, East Java",
+      "highlights": [
+        "Developed Enpitsu, a Computer Based Test (CBT) application tailored for school requirements",
+        "Optimized software design to improve application performance by 25%",
+        "Configured and maintained Virtual Private Server (VPS) using Docker, Docker Compose, and NGINX for optimal deployment",
+        "Automated application updates via Docker images, reducing deployment time by 30%"
+      ]
+    },
+    {
+      "name": "NATVPS.id",
+      "position": "Writer",
+      "url": "",
+      "startDate": "2022-05",
+      "endDate": "",
+      "location": "Jakarta",
+      "highlights": [
+        "Authored technical articles on server management, DevOps, and optimization tutorials",
+        "Assisted the community and VPS users in learning best practices for server administration"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "UKM Cyber Security ITS",
+      "location": "Surabaya, Indonesia",
+      "position": "Member",
+      "url": "https://instagram.com/ucs_its",
+      "startDate": "2025-09",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Participated in several Capture the Flag competitions.",
+        "Engaged with the community and shared new knowledge with other members."
+      ]
+    },
+    {
+      "organization": "A Renewable Agent (ARA) 7.0",
+      "location": "Surabaya, Indonesia",
+      "position": "Backend Developer",
+      "url": "https://instagram.com/ara_its",
+      "startDate": "2025-09",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Developed a website to serve as the main platform for the ARA 7.0 event series using Go, Gin, and GORM.",
+        "Designed core website structure including database, request handling, middlewares, and authentication for smooth operation and secure user access",
+        "Collaborated across staff and divisions to reach consensus on website development",
+        "Worked together on codebase using Git, GitHub, and ticketing system"
+      ]
+    },
+    {
+      "organization": "Ini Lho ITS! 2026",
+      "location": "Surabaya, Indonesia",
+      "position": "Backend Developer",
+      "url": "https://inilho.its.ac.id",
+      "startDate": "2025-09",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Developed a website to serve as the main platform for the Ini Lho ITS! 2026 event series using Go, Gin, and GORM.",
+        "Designed core website structure including database, request handling, middlewares, and authentication for smooth operation and secure user access",
+        "Collaborated across staff and divisions to reach consensus on website development",
+        "Worked together on codebase using Git, GitHub, and ticketing system"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Institut Teknologi Sepuluh Nopember (ITS)",
+      "url": "https://it.its.ac.id",
+      "location": "Surabaya, Indonesia",
+      "area": "Information Technology",
+      "studyType": "Undergraduate",
+      "startDate": "2025-08",
+      "endDate": "",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "SMA Negeri 1 Boyolangu",
+      "url": "https://sman1boyolangu.sch.id",
+      "location": "Tulungagung, Indonesia",
+      "area": "MIPA",
+      "studyType": "High School",
+      "startDate": "2022-07",
+      "endDate": "2025-05",
+      "score": "90.6",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "2nd Winner (Runner-up) of OlimpIT - A Renewable Agent 6.0",
+      "date": "2025-01",
+      "awarder": "Himpunan Mahasiswa Teknologi Informasi (HMIT) ITS",
+      "summary": "Cybersecurity & IoT competition involving real-world IoT project design."
+    },
+    {
+      "title": "Semifinalist of Business Plan Competition - BRAND UI",
+      "date": "2023-10",
+      "awarder": "Himpunan Mahasiswa Administrasi Niaga FIA UI",
+      "summary": "Developed \"AjarinAku,\" a proposal for a tech-integrated education mentorship service."
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Languages",
+      "level": "",
+      "keywords": ["Python", "C", "C++", "JavaScript"]
+    },
+    {
+      "name": "Robotics & Embedded Systems",
+      "level": "",
+      "keywords": ["ROS 2", "OpenCV", "ESP32", "Arduino"]
+    },
+    {
+      "name": "Android Development",
+      "level": "",
+      "keywords": ["Linux Kernel", "Makefile", "AOSP / LineageOS"]
+    },
+    {
+      "name": "Backend & Web",
+      "level": "",
+      "keywords": ["Flask", "FastAPI", "Bootstrap 5", "shadcn/ui"]
+    },
+    {
+      "name": "DevOps & Tools",
+      "level": "",
+      "keywords": [
+        "Docker",
+        "Docker Compose",
+        "NGINX",
+        "Jenkins",
+        "Git",
+        "Gerrit Code Review",
+        "VS Code"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Bahasa Indonesia",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Proficient"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ROAbsen - Robotika Smaboy Attendance Machine",
+      "startDate": "2024-01",
+      "endDate": "",
+      "summary": "Card-based attendance machine, created for SMAN 1 Boyolangu’s robotics club. ",
+      "description": "Card-based attendance machine, created for SMAN 1 Boyolangu’s robotics club. It utilizes ESP32 with RFID sensor & built-in Wi-Fi as client machine, and a REST API made with Flask as server endpoint to accept and process the submitted card. The parsed data is the card’s Unique Identification (UID) as well as attendance time. It provides an authentication mechanism as well as automatic data export to Google Spreadsheets.",
+      "highlights": [
+        "Utilizes ESP32 with RFID sensor & built-in Wi-Fi as client machine",
+        "REST API made with Flask as server endpoint to accept and process the submitted card",
+        "Parses card's Unique Identification (UID) and attendance time",
+        "Provides authentication mechanism and automatic data export to Google Spreadsheets"
+      ],
+      "url": ""
+    },
+    {
+      "name": "JadwalV2",
+      "startDate": "2024-10",
+      "endDate": "",
+      "summary": "SMAN 1 Boyolangu’s schedule site for all grades (X, XI, and XII). Designed to help students see their class schedules easier by providing clean web UI for student and automated data import mechanism for admin to set new schedules.",
+      "description": "SMAN 1 Boyolangu’s schedule site for all grades (X, XI, and XII). Designed to help students see their class schedules easier by providing web UI for student and automated data import mechanism for admin to set new schedules. JadwalV2 also provides automatic WhatsApp bot notifications, ran daily to notify students about their upcoming class schedule.",
+      "highlights": [
+        "Provides web UI for students and automated data import mechanism for admin",
+        "Provides automatic WhatsApp bot notifications, ran daily to notify students about their upcoming class schedule"
+      ],
+      "url": "https://jadwal.sman1boyolangu.sch.id"
+    }
+  ]
+}

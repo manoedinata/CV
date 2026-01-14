@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Hendra Manudinata</title><link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel=stylesheet><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel=stylesheet><link href=https://unpkg.com/aos@2.3.1/dist/aos.css rel=stylesheet><style>
+      /* --- CSS Variables for Theming --- */
+      :root {
+        /* Default (Light) Theme */
+        --primary-color: #198754;
+        --secondary-color: #64748b;
+        --bg-color: #ffffff;
+        --bg-subtle: #f8fafc;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --navbar-bg: rgba(255, 255, 255, 0.85);
+        --border-color: rgba(0, 0, 0, 0.05);
+        --shadow-color: rgba(0, 0, 0, 0.05);
+        --timeline-line: #e2e8f0;
+        --timeline-marker-bg: #ffffff;
+        --circle-color: #198754;
+        --badge-bg: #ffffff;
+        --badge-border: #e2e8f0;
+        --badge-text: #0f172a;
+      }
+
+      [data-theme="dark"] {
+        /* Dark Theme Overrides */
+        --primary-color: #2ea06d; /* Slightly brighter green for dark mode contrast */
+        --secondary-color: #94a3b8;
+        --bg-color: #0b0f19; /* Very dark blue/black */
+        --bg-subtle: #111827; /* Dark Slate */
+        --text-main: #f1f5f9;
+        --text-muted: #cbd5e1;
+        --card-bg: rgba(30, 41, 59, 0.85); /* Dark card with transparency */
+        --navbar-bg: rgba(11, 15, 25, 0.85);
+        --border-color: rgba(255, 255, 255, 0.1);
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --timeline-line: #334155;
+        --timeline-marker-bg: #0b0f19;
+        --circle-color: #2ea06d;
+        --badge-bg: #1e293b;
+        --badge-border: #334155;
+        --badge-text: #f1f5f9;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-main);
+        background-color: var(--bg-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* --- Navbar Toggler Customization --- */
+      /* Removes the border */
+      .navbar-toggler {
+        border: none;
+        box-shadow: none !important;
+      }
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      .navbar-toggler .toggler-icon-bars {
+        display: none;
+      }
+      .navbar-toggler .toggler-icon-close {
+        display: inline-block;
+      }
+      .navbar-toggler.collapsed .toggler-icon-bars {
+        display: inline-block;
+      }
+      .navbar-toggler.collapsed .toggler-icon-close {
+        display: none;
+      }
+
+      /* --- Background Animation --- */
+      .area {
+        /* Gradient adapted for dark mode visibility */
+        background: transparent;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .circles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .circles li {
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background: var(--circle-color);
+        animation: animate 25s linear infinite;
+        bottom: -150px;
+        opacity: 0.1;
+        border-radius: 4px;
+      }
+
+      /* Keep existing circle child definitions */
+      .circles li:nth-child(1) {
+        left: 25%;
+        width: 80px;
+        height: 80px;
+        animation-delay: 0s;
+      }
+      .circles li:nth-child(2) {
+        left: 10%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 2s;
+        animation-duration: 12s;
+      }
+      .circles li:nth-child(3) {
+        left: 70%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 4s;
+      }
+      .circles li:nth-child(4) {
+        left: 40%;
+        width: 60px;
+        height: 60px;
+        animation-delay: 0s;
+        animation-duration: 18s;
+      }
+      .circles li:nth-child(5) {
+        left: 65%;
+        width: 20px;
+        height: 20px;
+        animation-delay: 0s;
+      }
+      .circles li:nth-child(6) {
+        left: 75%;
+        width: 110px;
+        height: 110px;
+        animation-delay: 3s;
+      }
+      .circles li:nth-child(7) {
+        left: 35%;
+        width: 150px;
+        height: 150px;
+        animation-delay: 7s;
+      }
+      .circles li:nth-child(8) {
+        left: 50%;
+        width: 25px;
+        height: 25px;
+        animation-delay: 15s;
+        animation-duration: 45s;
+      }
+      .circles li:nth-child(9) {
+        left: 20%;
+        width: 15px;
+        height: 15px;
+        animation-delay: 2s;
+        animation-duration: 35s;
+      }
+      .circles li:nth-child(10) {
+        left: 85%;
+        width: 150px;
+        height: 150px;
+        animation-delay: 0s;
+        animation-duration: 11s;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.1;
+          border-radius: 0;
+        }
+        100% {
+          transform: translateY(-1000px) rotate(720deg);
+          opacity: 0.4;
+          border-radius: 50%;
+        }
+      }
+
+      /* --- Navbar --- */
+      .navbar {
+        backdrop-filter: blur(12px);
+        background-color: var(--navbar-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+      .navbar-brand {
+        font-weight: 700;
+        color: var(--primary-color) !important;
+        letter-spacing: -0.5px;
+      }
+      .nav-link {
+        font-weight: 500;
+        color: var(--secondary-color);
+        margin: 0 10px;
+        transition: color 0.3s;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      /* --- Theme Switcher Button --- */
+      .theme-switch-wrapper {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+      }
+      .theme-switch {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+      }
+      .theme-switch:hover {
+        transform: scale(1.1);
+        color: var(--primary-color);
+      }
+
+      /* --- Hero Section --- */
+      .hero-section {
+        padding: 120px 0 100px;
+        background: transparent;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+      }
+
+      /* --- Profile Animation --- */
+      @keyframes float-profile {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .profile-wrapper {
+        position: relative;
+        display: inline-block;
+        animation: float-profile 6s ease-in-out infinite;
+      }
+
+      .profile-wrapper:hover {
+        animation-play-state: paused;
+      }
+
+      .profile-img {
+        width: 225px;
+        height: 225px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+        transform: rotate(-3deg);
+        transition: transform 0.4s ease;
+        border: 4px solid var(--bg-color); /* Matches background */
+        background: var(--bg-color);
+      }
+
+      @media (min-width: 992px) {
+        .profile-img {
+          width: 285px;
+          height: 285px;
+        }
+      }
+
+      .profile-wrapper:hover .profile-img {
+        transform: rotate(0deg) scale(1.02);
+      }
+
+      /* --- Section Styling --- */
+      section {
+        padding: 100px 0;
+        position: relative;
+        z-index: 1;
+      }
+      .bg-subtle {
+        background-color: var(--bg-subtle);
+        transition: background-color 0.3s ease;
+      }
+      .section-header {
+        margin-bottom: 60px;
+      }
+      .section-title {
+        font-weight: 800;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+        color: var(--text-main);
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40%;
+        height: 4px;
+        background: var(--primary-color);
+        border-radius: 2px;
+      }
+
+      /* Helper classes for text colors */
+      .text-main {
+        color: var(--text-main) !important;
+      }
+      .text-secondary-custom {
+        color: var(--text-muted) !important;
+      }
+      .text-success-custom {
+        color: var(--primary-color) !important;
+      }
+
+      /* --- Timeline --- */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+        border-left: 2px solid var(--timeline-line);
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-marker {
+        position: absolute;
+        left: -2.6rem;
+        top: 0.25rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        background: var(--timeline-marker-bg);
+        border: 3px solid var(--primary-color);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--accent-glow);
+      }
+      .timeline-date {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      /* --- Cards --- */
+      .custom-card,
+      .card {
+        border: none;
+        border-radius: 16px;
+        background: var(--card-bg);
+        backdrop-filter: blur(5px);
+        box-shadow:
+          0 4px 6px -1px var(--shadow-color),
+          0 2px 4px -1px var(--shadow-color);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          background-color 0.3s ease;
+        height: 100%;
+        overflow: hidden;
+        color: var(--text-main);
+      }
+      .custom-card:hover,
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 20px 25px -5px var(--shadow-color),
+          0 10px 10px -5px var(--shadow-color);
+      }
+      .card-body {
+        padding: 2rem;
+      }
+
+      /* --- Badges & Skills --- */
+      .badge.bg-light {
+        background-color: var(--badge-bg) !important;
+        color: var(--badge-text) !important;
+        border: 1px solid var(--badge-border) !important;
+      }
+
+      .skill-group h5 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+      .skill-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--badge-text);
+        transition: all 0.2s;
+        box-shadow: 0 1px 2px var(--shadow-color);
+      }
+      .skill-badge:hover {
+        border-color: var(--primary-color);
+        background: var(--primary-color);
+        color: #ffffff;
+      }
+      .skill-badge i {
+        margin-right: 8px;
+      }
+
+      /* --- Footer --- */
+      .footer {
+        background-color: #0b0f19; /* Always dark for footer looks good */
+        color: #94a3b8;
+        padding: 60px 0 30px;
+        position: relative;
+        z-index: 1;
+        border-top: 1px solid var(--border-color);
+      }
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        color: white;
+        margin: 0 10px;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+      .social-link:hover {
+        background: var(--primary-color);
+        transform: translateY(-3px);
+        color: white;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-section {
+          text-align: center;
+          padding-top: 100px;
+        }
+        .profile-wrapper {
+          margin-bottom: 40px;
+        }
+        .section-title::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .timeline {
+          border-left: none;
+          padding-left: 0;
+        }
+        .timeline-marker {
+          display: none;
+        }
+        .timeline-item {
+          border-left: 2px solid var(--primary-color);
+          padding-left: 1.5rem;
+        }
+      }
+    </style></head><body data-bs-spy=scroll data-bs-target=#mainNav data-bs-offset=100><div class=area><ul class=circles><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div><div class=theme-switch-wrapper><button class=theme-switch id=themeToggle aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button></div><nav class="navbar navbar-expand-lg fixed-top" id=mainNav data-aos=fade-down data-aos-duration=800><div class=container><a class=navbar-brand href=#>ndra.</a><button class="navbar-toggler collapsed" type=button data-bs-toggle=collapse data-bs-target=#navbarNav><i class="fa-solid fa-bars toggler-icon-bars"></i><i class="fa-solid fa-x toggler-icon-close"></i></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link active" href=#home>Home</a></li><li class=nav-item><a class=nav-link href=#about>About</a></li><li class=nav-item><a class=nav-link href=#experience>Experience</a></li><li class=nav-item><a class=nav-link href=#education>Education</a></li><li class=nav-item><a class=nav-link href=#projects>Projects</a></li><li class=nav-item><a class=nav-link href=#skills>Skills</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# role=button data-bs-toggle=dropdown aria-expanded=false> CV </a><ul class=dropdown-menu><li><a class=dropdown-item href=printable>HTML</a></li><li><a class=dropdown-item href=resume.pdf>PDF (CV ATS)</a></li></ul></li></ul></div></div></nav><section id=home class=hero-section><div class=container><div class="row align-items-center flex-column-reverse flex-lg-row"><div class="col-lg-7 text-center text-lg-start" data-aos=fade-up data-aos-duration=1000><h1 class="display-3 fw-bold mb-3 text-main"> Hi, I'm <span class=text-success-custom>Hendra Manudinata</span></h1><h2 class="h3 text-secondary-custom fw-light mb-4"> Information Technology Undergraduate Student </h2><p class="lead mb-5 text-secondary-custom"> Creating innovative solutions to solve real-world problems. Passionate about robotics, cyber security, and building efficient autonomous systems. </p><div class="d-flex gap-3 justify-content-center justify-content-lg-start"><a href=#experience class="btn btn-success btn-lg rounded-pill px-5 shadow-sm">Experiences</a></div></div><div class="col-lg-5 text-center mb-4 mb-lg-0" data-aos=fade-up data-aos-duration=1000 data-aos-delay=200><div class=profile-wrapper><img src=me.png alt="Hendra Manudinata" class=profile-img></div></div></div></div></section><section id=about class=bg-subtle><div class=container data-aos=fade-up data-aos-duration=1000><div class="row justify-content-center"><div class="col-lg-8 text-center"><div class=section-header><h2 class=section-title>About Me</h2></div><p class="fs-5 text-secondary-custom">Undergraduate student majoring in Information Technology at Institut Teknologi Sepuluh Nopember (ITS). Creates innovative solutions with technology to solve real-world problems. Currently diving deeper into robotics and cyber security, honing skills in efficient programming technique, autonomous system, and security research.</p></div></div></div></section><section id=experience><div class=container><div class="section-header text-center" data-aos=fade-up><h2 class=section-title>Work Experience</h2></div><div class="row justify-content-center"><div class=col-lg-9><div class=timeline><div class=timeline-item data-aos=fade-up data-aos-delay=100><span class=timeline-marker></span><span class=timeline-date> December 2025 - Present</span><div class="card shadow-sm"><div class=card-body><h4 class=fw-bold>IRIS ITS</h4><h5 class="text-success-custom mb-3"> Programmer / Research Assistant </h5><ul class="text-secondary-custom mb-0 ps-3"><li>Developed object tracking software with image processing technique using OpenCV</li><li>Utilizing various approach to accurately measure an object distance in real-life based on camera image</li><li>Developing Neural Network system to predict the next robot's decision</li><li>Created autonomous robot system & nodes using ROS 2 "Humble" framework</li><li>Built robot monitoring website to control & analyze robot's movement & command using Vue.js, Express.js, and ROSBridge</li></ul></div></div></div><div class=timeline-item data-aos=fade-up data-aos-delay=100><span class=timeline-marker></span><span class=timeline-date> January 2024 - Present</span><div class="card shadow-sm"><div class=card-body><h4 class=fw-bold>Enpitsu CBT</h4><h5 class="text-success-custom mb-3"> DevOps Engineer </h5><ul class="text-secondary-custom mb-0 ps-3"><li>Developed Enpitsu, a Computer Based Test (CBT) application tailored for school requirements</li><li>Optimized software design to improve application performance by 25%</li><li>Configured and maintained Virtual Private Server (VPS) using Docker, Docker Compose, and NGINX for optimal deployment</li><li>Automated application updates via Docker images, reducing deployment time by 30%</li></ul></div></div></div><div class=timeline-item data-aos=fade-up data-aos-delay=100><span class=timeline-marker></span><span class=timeline-date> May 2022 - Present</span><div class="card shadow-sm"><div class=card-body><h4 class=fw-bold>NATVPS.id</h4><h5 class="text-success-custom mb-3"> Writer </h5><ul class="text-secondary-custom mb-0 ps-3"><li>Authored technical articles on server management, DevOps, and optimization tutorials</li><li>Assisted the community and VPS users in learning best practices for server administration</li></ul></div></div></div></div></div></div></div></section><section id=education class=bg-subtle><div class=container><div class="section-header text-center" data-aos=fade-up><h2 class=section-title>Education</h2></div><div class="row g-4"><div class=col-md-6 data-aos=flip-up data-aos-delay=100><div class=custom-card><div class=card-body><div class="d-flex align-items-center mb-3"><i class="fas fa-university fa-2x text-success-custom me-3"></i><div><span class="text-muted small"> August 2025 - Present</span><h5 class="fw-bold mb-0">Institut Teknologi Sepuluh Nopember (ITS)</h5></div></div><p class="text-secondary-custom mb-0"> Major: <strong>Information Technology</strong></p></div></div></div><div class=col-md-6 data-aos=flip-up data-aos-delay=100><div class=custom-card><div class=card-body><div class="d-flex align-items-center mb-3"><i class="fas fa-university fa-2x text-success-custom me-3"></i><div><span class="text-muted small"> July 2022 - May 2025</span><h5 class="fw-bold mb-0">SMA Negeri 1 Boyolangu</h5></div></div><p class="text-secondary-custom mb-0"> Major: <strong>MIPA</strong></p><p class="badge bg-success bg-opacity-10 text-success mt-2"> Score: 90.6 </p></div></div></div></div></div></section><section id=projects><div class=container><div class="section-header text-center" data-aos=fade-up><h2 class=section-title>Featured Projects</h2></div><div class="row g-4"><div class=col-md-6 data-aos=zoom-in data-aos-delay=100><div class=custom-card><div class="card-body d-flex flex-column"><div class="d-flex justify-content-between align-items-start mb-3"><div><h4 class=fw-bold>ROAbsen - Robotika Smaboy Attendance Machine</h4><p class="text-success-custom small mb-0"> Card-based attendance machine, created for SMAN 1 Boyolangu’s robotics club </p></div><div class="bg-light rounded-circle p-2"><i class="fas fa-project-diagram text-success"></i></div></div><p class="text-secondary-custom flex-grow-1"> It utilizes ESP32 with RFID sensor & built-in Wi-Fi as client machine, and a REST API made with Flask as server endpoint to accept and process the submitted card. The parsed data is the card’s Unique Identification (UID) as well as attendance time. It provides an authentication mechanism as well as automatic data export to Google Spreadsheets. </p><div class=mt-3></div></div></div></div><div class=col-md-6 data-aos=zoom-in data-aos-delay=100><div class=custom-card><div class="card-body d-flex flex-column"><div class="d-flex justify-content-between align-items-start mb-3"><div><h4 class=fw-bold>JadwalV2</h4><a href=https://jadwal.sman1boyolangu.sch.id target=_blank class="text-decoration-none small text-success-custom"> https://jadwal.sman1boyolangu.sch.id <i class="fas fa-external-link-alt ms-1"></i></a><p class="text-success-custom small mb-0"> SMAN 1 Boyolangu’s schedule site for all grades (X, XI, and XII) </p></div><div class="bg-light rounded-circle p-2"><i class="fas fa-project-diagram text-success"></i></div></div><p class="text-secondary-custom flex-grow-1"> Designed to help students see their class schedules easier by providing web UI for student and automated data import mechanism for admin to set new schedules. JadwalV2 also provides automatic WhatsApp bot notifications, ran daily to notify students about their upcoming class schedule. </p><div class=mt-3></div></div></div></div></div></div></section><section id=skills class=bg-subtle><div class=container><div class="section-header text-center" data-aos=fade-up><h2 class=section-title>Skills & Tools</h2></div><div class="row g-4"><div class=col-md-4 data-aos=fade-up data-aos-delay=200><div class="skill-group text-center text-md-start"><h5>Languages</h5><div><span class=skill-badge>Python</span><span class=skill-badge>C</span><span class=skill-badge>C++</span><span class=skill-badge>JavaScript</span></div></div></div><div class=col-md-4 data-aos=fade-up data-aos-delay=200><div class="skill-group text-center text-md-start"><h5>Robotics & Embedded Systems</h5><div><span class=skill-badge>ROS 2</span><span class=skill-badge>OpenCV</span><span class=skill-badge>ESP32</span><span class=skill-badge>Arduino</span></div></div></div><div class=col-md-4 data-aos=fade-up data-aos-delay=200><div class="skill-group text-center text-md-start"><h5>Android Development</h5><div><span class=skill-badge>Linux Kernel</span><span class=skill-badge>Makefile</span><span class=skill-badge>AOSP / LineageOS</span></div></div></div><div class=col-md-4 data-aos=fade-up data-aos-delay=200><div class="skill-group text-center text-md-start"><h5>Backend & Web</h5><div><span class=skill-badge>Flask</span><span class=skill-badge>FastAPI</span><span class=skill-badge>Bootstrap 5</span><span class=skill-badge>shadcn/ui</span></div></div></div><div class=col-md-4 data-aos=fade-up data-aos-delay=200><div class="skill-group text-center text-md-start"><h5>DevOps & Tools</h5><div><span class=skill-badge>Docker</span><span class=skill-badge>Docker Compose</span><span class=skill-badge>NGINX</span><span class=skill-badge>Jenkins</span><span class=skill-badge>Git</span><span class=skill-badge>Gerrit Code Review</span><span class=skill-badge>VS Code</span></div></div></div></div></div></section><footer class=footer><div class="container text-center"><div class=mb-4><a href=https://linkedin.com/in/manoedinata target=_blank class=social-link><i class="fab fa-linkedin"></i></a><a href=https://github.com/manoedinata target=_blank class=social-link><i class="fab fa-github"></i></a></div><p class=mb-0>© 2026 Hendra Manudinata</p></div></footer><script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js></script><script src=https://unpkg.com/aos@2.3.1/dist/aos.js></script><script>
+      AOS.init({ once: true, offset: 100 });
+
+      const toggleButton = document.getElementById("themeToggle");
+      const icon = toggleButton.querySelector("i");
+      const htmlElement = document.documentElement;
+
+      // Check Local Storage on Load
+      var currentTheme = localStorage.getItem("theme");
+
+      // if no preference, check system preference
+      if (!currentTheme) {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (prefersDark) {
+          localStorage.setItem("theme", "dark");
+          currentTheme = "dark";
+        } else {
+          localStorage.setItem("theme", "light");
+          currentTheme = "light";
+        }
+      }
+
+      if (currentTheme === "dark") {
+        htmlElement.setAttribute("data-theme", "dark");
+        htmlElement.setAttribute("data-bs-theme", "dark"); // For Bootstrap components
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      }
+
+      toggleButton.addEventListener("click", () => {
+        const isDark = htmlElement.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+          // Switch to Light
+          htmlElement.setAttribute("data-theme", "light");
+          htmlElement.setAttribute("data-bs-theme", "light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+
+          localStorage.setItem("theme", "light");
+        } else {
+          // Switch to Dark
+          htmlElement.setAttribute("data-theme", "dark");
+          htmlElement.setAttribute("data-bs-theme", "dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+
+          localStorage.setItem("theme", "dark");
+        }
+      });
+    </script></body></html>
