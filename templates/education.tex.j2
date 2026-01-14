@@ -6,9 +6,9 @@
     {<< edu.area | escape_tex >>
     {%- if edu.score -%}(Grade: << edu.score >>){%- endif -%}
         }
-        {<< edu.startDate | escape_tex >> --
+        {<< edu.startDate | escape_tex | date_format >> --
         {%- if edu.endDate -%}
-            << edu.endDate | escape_tex >>
+            << edu.endDate | escape_tex | date_format >>
         {%- else -%}
             Present
         {%- endif -%}

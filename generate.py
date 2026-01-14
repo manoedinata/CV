@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import subprocess
+import datetime
 
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
@@ -9,6 +10,14 @@ from jinja2 import FileSystemLoader
 from latex import escape_latex
 from latex import generate_latex
 from webpage import generate_webpage
+
+def date_format(date_str: str) -> str:
+    """Convert date from 'YYYY-MM' to 'Month YYYY' format."""
+    try:
+        date_obj = datetime.datetime.strptime(date_str, '%Y-%m')
+        return date_obj.strftime('%B %Y')
+    except ValueError:
+        return date_str  # Return as-is if format is incorrect
 
 # Get current directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -43,6 +52,7 @@ env = Environment(
 
 # Custom filter
 env.filters['escape_tex'] = escape_latex
+env.filters['date_format'] = date_format
 
 
 ### HEADER

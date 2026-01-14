@@ -221,9 +221,9 @@
         <div class="d-flex justify-content-between align-items-baseline mb-1">
           <h3>{{ work.name }}</h3>
           <span class="text-secondary small">
-            {{ work.startDate }} -
+            {{ work.startDate | date_format }} -
             {% if work.endDate -%}
-              {{ work.endDate }}{%
+              {{ work.endDate | date_format }}{%
               else -%}Present
             {%- endif -%}
           </span>
@@ -249,10 +249,10 @@
             </div>
           </div>
           <span class="text-secondary small">
-            {{ education.startDate }} -
+            {{ education.startDate | date_format }} -
             {% if education.endDate -%}
               {{
-              education.endDate
+              education.endDate | date_format
               }}
             {% else -%}
               Present

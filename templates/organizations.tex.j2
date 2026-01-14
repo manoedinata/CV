@@ -3,9 +3,9 @@
     {<< org.name | escape_tex >>}
     {<< org.location | escape_tex >>}
     {<< org.position | escape_tex >>}
-    {<< org.startDate | escape_tex >> --
+    {<< org.startDate | escape_tex | date_format >> --
     {%- if org.endDate -%}
-        << org.endDate | escape_tex >>
+        << org.endDate | escape_tex | date_format >>
     {%- else -%}
         Present
     {%- endif -%}
