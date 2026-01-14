@@ -93,8 +93,12 @@ except FileNotFoundError:
 
 
 # Generate the Webpage
-os.chdir(current_dir)
 env.loader = FileSystemLoader(website_dir)
 env.variable_start_string = '{{'
 env.variable_end_string = '}}'
 generate_webpage(data, env, output_dir)
+
+os.chdir(output_dir)
+os.remove("main.log")
+os.remove("main.aux")
+os.remove("main.out")
