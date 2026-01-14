@@ -192,7 +192,7 @@
           <h1>{{ data.basics.name }}</h1>
           <p class="header-label mb-3">{{ data.basics.label }}</p>
           <div class="d-flex gap-3 fs-6 text-muted mt-2">
-            <a href="#" target="_blank"><i class="bi bi-envelope"></i> {{ data.basics.email }}</a>
+            <a href="mailto:{{ data.basics.email }}" target="_blank"><i class="bi bi-envelope"></i> {{ data.basics.email }}</a>
             <span><i class="bi bi-globe"></i> {{ data.basics.location }}</span>
             {%- for profile in data.basics.profiles -%}
             <a href="https://{{ profile.url }}" target="_blank"><i class="bi bi-{{ profile.network | lower }}"></i>
