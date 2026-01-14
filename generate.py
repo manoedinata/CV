@@ -86,7 +86,8 @@ try:
 
     for i in range(2):  # Run xelatex twice to ensure references are updated
         subprocess.run(["xelatex", "-interaction=nonstopmode", f"-output-directory={output_dir}", "main.tex"], check=True)
-    print("\nSuccess! main.pdf generated.")
+    os.rename(os.path.join(output_dir, 'main.pdf'), os.path.join(output_dir, 'resume.pdf'))
+    print("\nSuccess! resume.pdf generated.")
 except subprocess.CalledProcessError as e:
     print("Error during compilation. Check main.log for details.")
 except FileNotFoundError:
