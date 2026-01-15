@@ -201,10 +201,28 @@
         display: flex;
         align-items: center;
       }
+
+      @keyframes float-profile {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
       .profile-wrapper {
         position: relative;
         display: inline-block;
+        animation: float-profile 4s ease-in-out infinite;
       }
+      .profile-wrapper:hover {
+        animation-play-state: paused;
+      }
+
       .profile-img {
         width: 225px;
         height: 225px;
