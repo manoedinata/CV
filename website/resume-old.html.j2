@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="{{ data.basics.name }}" />
+    <meta name="description" content="{{ data.basics.summary }}" />
+    <meta
+      name="keywords"
+      content="{%- for skill in data.skills -%}{{ skill.name }}{%- if not loop.last -%},{%- endif -%}{%- endfor -%}"
+    />
+    <title>{{ data.basics.name }}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <style>
+      :root {
+        --bg-color: #fff;
+        --text-color: #222;
+        --text-secondary: #666;
+        --border-radius: 8px;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        line-height: 1.5;
+        padding-bottom: 80px;
+        /* Space for the command bar */
+      }
+
+      /* Container acts like the A4 paper */
+      .cv-container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.025em;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        color: var(--text-color);
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      p,
+      li {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      li {
+        line-height: 1.25;
+      }
+
+      p .header-label {
+        max-width: 400px;
+      }
+
+      a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      a:hover {
+        color: var(--text-color);
+        text-decoration: underline;
+      }
+
+      /* Skills Tags */
+      .badge-skill {
+        background-color: #eee;
+        color: #333;
+        font-weight: 500;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        margin-right: 0.25rem;
+        margin-bottom: 0.25rem;
+        display: inline-block;
+      }
+
+      .badge-skill:hover {
+        background-color: #e0e0e0;
+        border-color: #ccc;
+      }
+
+      /* Project Cards */
+      .project-card {
+        border: 1px solid #eee;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        height: 100%;
+        transition: all 0.2s;
+      }
+
+      .project-card:hover {
+        border-color: #ddd;
+        background-color: #fafafa;
+      }
+
+      .project-title a {
+        color: var(--text-color);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      /* Avatar */
+      .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 12px;
+        object-fit: cover;
+        background-color: #eee;
+      }
+
+      /* Command Bar Footer */
+      .command-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid #eee;
+        padding: 12px;
+        font-size: 0.85rem;
+        color: #666;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
+      }
+
+      .kbd {
+        background: #f4f4f4;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 0.75rem;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Print Specifics */
+      @media print {
+        .command-bar {
+          display: none;
+        }
+
+        body {
+          padding-bottom: 0;
+        }
+
+        .cv-container {
+          padding: 0;
+          max-width: 100%;
+        }
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="cv-container">
+      <header class="d-flex justify-content-between align-items-start mb-5">
+        <div class="pe-4">
+          <h1>{{ data.basics.name }}</h1>
+          <p class="header-label mb-3">{{ data.basics.label }}</p>
+          <div class="d-flex gap-3 fs-6 text-muted mt-2">
+            <a href="mailto:{{ data.basics.email }}" target="_blank"
+              ><i class="bi bi-envelope"></i> {{ data.basics.email }}</a
+            >
+            <span><i class="bi bi-globe"></i> {{ data.basics.location }}</span>
+            {%- for profile in data.basics.profiles -%}
+              <a href="https://{{ profile.url }}" target="_blank"
+                ><i class="bi bi-{{ profile.network | lower }}"></i>
+                {{ profile.network }}</a
+              >
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- if data.basics.image -%}
+          <div class="d-none d-sm-block">
+            <img
+              src="{{ data.basics.image }}"
+              height="100"
+              width="100"
+              alt="Profile"
+              class="avatar"
+            />
+          </div>
+        {%- endif -%}
+      </header>
+      <section class="mb-5">
+        <h2>About</h2>
+        <p>{{ data.basics.summary }}</p>
+      </section>
+      <section class="mb-5">
+        <h2>Work Experience</h2>
+        {%- for work in data.work -%}
+          <div class="mb-4">
+            <div
+              class="d-flex justify-content-between align-items-baseline mb-1"
+            >
+              <h3>{{ work.name }}</h3>
+              <span class="text-secondary small">
+                {{ work.startDate | date_format }} -
+                {% if work.endDate -%}
+                  {{ work.endDate | date_format }}
+                {% else -%}
+                  Present
+                {%- endif -%}
+              </span>
+            </div>
+            <div class="text-secondary small mb-2">{{ work.position }}</div>
+            <ul>
+              {%- for highlight in work.highlights -%}
+                <li>{{ highlight }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </section>
+      <section class="mb-5">
+        <h2>Education</h2>
+        {%- for education in data.education -%}
+          <div
+            class="d-flex justify-content-between align-items-baseline {% if not loop.last %}mb-3{% endif %}"
+          >
+            <div>
+              <h3 class="mb-0">{{ education.institution }}</h3>
+              <div class="text-secondary small">
+                {{ education.area }}
+                {%- if education.score %}
+                  (Score: {{ education.score }})
+                {%- endif -%}
+              </div>
+            </div>
+            <span class="text-secondary small">
+              {{ education.startDate | date_format }} -
+              {% if education.endDate -%}
+                {{ education.endDate | date_format }}
+              {% else -%}
+                Present
+              {%- endif -%}
+            </span>
+          </div>
+        {%- endfor -%}
+      </section>
+      <section class="mb-5">
+        <h2>Projects</h2>
+        <div class="row g-3">
+          {%- for project in data.projects -%}
+            <div class="col-md-6 col-12">
+              <div class="project-card d-flex flex-column h-100">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <h3 class="project-title fs-6">
+                    {%- if project.url -%}
+                      <a href="{{ project.url }}" target="_blank"
+                        >{{ project.name }}</a
+                      >
+                    {%- else -%}
+                      {{ project.name }}
+                    {%- endif -%}
+                  </h3>
+                  <!-- <span class="text-success small">● Active</span> -->
+                </div>
+                <p class="flex-grow-1">{{ project.summary }}</p>
+                <!-- <div class="mt-2">
+                <span class="badge-skill">JavaScript</span>
+                <span class="badge-skill">TypeScript</span>
+              </div> -->
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </section>
+      <section>
+        <h2>Skills & Tools</h2>
+        <div class="d-flex flex-wrap">
+          {%- for skill in data.skills -%}
+            {%- for keyword in skill.keywords -%}
+              <span class="badge-skill">{{ keyword }}</span>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
