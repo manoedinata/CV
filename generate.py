@@ -100,6 +100,8 @@ env.variable_start_string = '{{'
 env.variable_end_string = '}}'
 generate_webpage(data, env, output_dir)
 shutil.copyfile(os.path.join(website_dir, 'me.png'), os.path.join(output_dir, 'me.png'))
+with open(os.path.join(output_dir, 'CNAME'), "w") as cname:
+    cname.write(data["basics"]["url"].replace("https://", "").replace("http://", ""))
 
 os.chdir(output_dir)
 os.remove("main.log")
