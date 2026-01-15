@@ -271,7 +271,9 @@
               <h3 class="mb-0">{{ education.institution }}</h3>
               <div class="text-secondary small">
                 {{ education.area }}
-                {%- if education.score -%}(Score: {{ education.score }}){%- endif -%}
+                {%- if education.score %}
+                  (Score: {{ education.score }})
+                {%- endif -%}
               </div>
             </div>
             <span class="text-secondary small">
