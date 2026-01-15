@@ -695,23 +695,16 @@
     <footer class="footer">
       <div class="container text-center">
         <div class="mb-4">
-          <a
-            href="https://linkedin.com/in/manoedinata"
-            target="_blank"
-            class="social-link"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-          <a
-            href="https://github.com/mdinata"
-            target="_blank"
-            class="social-link"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="mailto:hendra@mdinata.my.id" class="social-link"
-            ><i class="fas fa-envelope"></i
-          ></a>
+          {% for profile in data.basics.profiles %}
+            <a
+              href="https://{{ profile.url }}"
+              target="_blank"
+              class="social-link"
+              ><i class="fab fa-{{ profile.network | lower }}"></i
+            ></a>
+          {% endfor %}
         </div>
-        <p class="mb-0">&copy; 2026 Hendra Manudinata</p>
+        <p class="mb-0">© 2026 Hendra Manudinata</p>
       </div>
     </footer>
 
