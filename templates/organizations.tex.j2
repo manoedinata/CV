@@ -1,16 +1,16 @@
-\entry
-{%- for org in data.organization -%}
-    {<< org.name | escape_tex >>}
-    {<< org.location | escape_tex >>}
-    {<< org.position | escape_tex >>}
-    {<< org.startDate | escape_tex | date_format >> --
-    {%- if org.endDate -%}
-        << org.endDate | escape_tex | date_format >>
+{%- for vol in data.volunteer -%}
+    \entry
+    {<< vol.organization | escape_tex >>}
+    {<< vol.location | escape_tex >>}
+    {<< vol.position | escape_tex >>}
+    {<< vol.startDate | escape_tex | date_format >> --
+    {%- if vol.endDate -%}
+        << vol.endDate | escape_tex | date_format >>
     {%- else -%}
         Present
     {%- endif -%}
     }
     {
-    {%- for detail in org.highlights -%}\item << detail | escape_tex>>{%- endfor -%}
-        }
-    {%- endfor -%}
+    {% for detail in vol.highlights %}\item << detail | escape_tex>>{% endfor %}
+    }
+{%- endfor -%}
