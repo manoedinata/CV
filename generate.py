@@ -28,7 +28,6 @@ website_dir = os.path.join(current_dir, 'website')
 output_dir = os.path.join(current_dir, 'docs')
 shutil.rmtree(output_dir) if os.path.exists(output_dir) else None
 os.makedirs(output_dir)
-shutil.copyfile(os.path.join(current_dir, '.nojekyll'), os.path.join(output_dir, '.nojekyll'))
 
 generated_dir = os.path.join(current_dir, 'generated')
 shutil.rmtree(generated_dir) if os.path.exists(generated_dir) else None
@@ -102,6 +101,8 @@ generate_webpage(data, env, output_dir)
 shutil.copyfile(os.path.join(website_dir, 'me.png'), os.path.join(output_dir, 'me.png'))
 with open(os.path.join(output_dir, 'CNAME'), "w") as cname:
     cname.write(data["basics"]["url"].replace("https://", "").replace("http://", ""))
+with open(os.path.join(output_dir, '.nojekyll'), 'w') as nojekyll:
+    nojekyll.write("") # Create an empty .nojekyll file
 
 os.chdir(output_dir)
 os.remove("main.log")
