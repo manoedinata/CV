@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="{{ data.basics.name }}" />
     <meta name="description" content="{{ data.basics.summary }}" />
-    <meta name="keywords"
-          content="{%- for skill in data.skills -%}{{ skill.name }}{%- if not loop.last -%}, {%- endif -%}{%- endfor -%}" />
+    <meta
+      name="keywords"
+      content="{%- for skill in data.skills -%}{{ skill.name }}{%- if not loop.last -%},{%- endif -%}{%- endfor -%}"
+    />
     <title>{{ data.basics.name }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-          rel="stylesheet" />
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <style>
       :root {
         --bg-color: #fff;
@@ -23,8 +29,17 @@
       body {
         background-color: var(--bg-color);
         color: var(--text-color);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
           sans-serif;
         line-height: 1.5;
         padding-bottom: 80px;
@@ -192,111 +207,124 @@
           <h1>{{ data.basics.name }}</h1>
           <p class="header-label mb-3">{{ data.basics.label }}</p>
           <div class="d-flex gap-3 fs-6 text-muted mt-2">
-            <a href="mailto:{{ data.basics.email }}" target="_blank"><i class="bi bi-envelope"></i> {{ data.basics.email }}</a>
+            <a href="mailto:{{ data.basics.email }}" target="_blank"
+              ><i class="bi bi-envelope"></i> {{ data.basics.email }}</a
+            >
             <span><i class="bi bi-globe"></i> {{ data.basics.location }}</span>
             {%- for profile in data.basics.profiles -%}
-            <a href="https://{{ profile.url }}" target="_blank"><i class="bi bi-{{ profile.network | lower }}"></i>
-          {{ profile.network }}</a>
-        {%- endfor -%}
-      </div>
-    </div>
-    {%- if data.basics.image -%}
-      <div class="d-none d-sm-block">
-        <img src="{{ data.basics.image }}"
-             height="100"
-             width="100"
-             alt="Profile"
-             class="avatar" />
-      </div>
-    {%- endif -%}
-  </header>
-  <section class="mb-5">
-    <h2>About</h2>
-    <p>{{ data.basics.summary }}</p>
-  </section>
-  <section class="mb-5">
-    <h2>Work Experience</h2>
-    {%- for work in data.work -%}
-      <div class="mb-4">
-        <div class="d-flex justify-content-between align-items-baseline mb-1">
-          <h3>{{ work.name }}</h3>
-          <span class="text-secondary small">
-            {{ work.startDate | date_format }} -
-            {% if work.endDate -%}
-              {{ work.endDate | date_format }}{%
-              else -%}Present
-            {%- endif -%}
-          </span>
-        </div>
-        <div class="text-secondary small mb-2">{{ work.position }}</div>
-        <ul>
-          {%- for highlight in work.highlights -%}
-            <li>{{ highlight }}</li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    {%- endfor -%}
-  </section>
-  <section class="mb-5">
-    <h2>Education</h2>
-    {%- for education in data.education -%}
-      <div class="d-flex justify-content-between align-items-baseline {% if not loop.last %}mb-3{% endif %}">
-        <div>
-          <h3 class="mb-0">{{ education.institution }}</h3>
-          <div class="text-secondary small">
-            {{ education.area }}
-            {%- if education.score -%}(Score: {{ education.score }}){%- endif -%}
-            </div>
+              <a href="https://{{ profile.url }}" target="_blank"
+                ><i class="bi bi-{{ profile.network | lower }}"></i>
+                {{ profile.network }}</a
+              >
+            {%- endfor -%}
           </div>
-          <span class="text-secondary small">
-            {{ education.startDate | date_format }} -
-            {% if education.endDate -%}
-              {{
-              education.endDate | date_format
-              }}
-            {% else -%}
-              Present
-            {%- endif -%}
-          </span>
         </div>
-      {%- endfor -%}
-    </section>
-    <section class="mb-5">
-      <h2>Projects</h2>
-      <div class="row g-3">
-        {%- for project in data.projects -%}
-          <div class="col-md-6 col-12">
-            <div class="project-card d-flex flex-column h-100">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="project-title fs-6">
-                  {%- if project.url -%}
-                    <a href="{{ project.url }}" target="_blank">{{
-                      project.name
-                    }}</a>
-                  {%- else -%}
-                    {{ project.name }}
-                  {%- endif -%}
-                </h3>
-                <!-- <span class="text-success small">● Active</span> -->
+        {%- if data.basics.image -%}
+          <div class="d-none d-sm-block">
+            <img
+              src="{{ data.basics.image }}"
+              height="100"
+              width="100"
+              alt="Profile"
+              class="avatar"
+            />
+          </div>
+        {%- endif -%}
+      </header>
+      <section class="mb-5">
+        <h2>About</h2>
+        <p>{{ data.basics.summary }}</p>
+      </section>
+      <section class="mb-5">
+        <h2>Work Experience</h2>
+        {%- for work in data.work -%}
+          <div class="mb-4">
+            <div
+              class="d-flex justify-content-between align-items-baseline mb-1"
+            >
+              <h3>{{ work.name }}</h3>
+              <span class="text-secondary small">
+                {{ work.startDate | date_format }} -
+                {% if work.endDate -%}
+                  {{ work.endDate | date_format }}
+                {% else -%}
+                  Present
+                {%- endif -%}
+              </span>
+            </div>
+            <div class="text-secondary small mb-2">{{ work.position }}</div>
+            <ul>
+              {%- for highlight in work.highlights -%}
+                <li>{{ highlight }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </section>
+      <section class="mb-5">
+        <h2>Education</h2>
+        {%- for education in data.education -%}
+          <div
+            class="d-flex justify-content-between align-items-baseline {% if not loop.last %}mb-3{% endif %}"
+          >
+            <div>
+              <h3 class="mb-0">{{ education.institution }}</h3>
+              <div class="text-secondary small">
+                {{ education.area }}
+                {%- if education.score -%}(Score: {{ education.score }}){%- endif -%}
               </div>
-              <p class="flex-grow-1">{{ project.summary }}</p>
-              <!-- <div class="mt-2">
+            </div>
+            <span class="text-secondary small">
+              {{ education.startDate | date_format }} -
+              {% if education.endDate -%}
+                {{ education.endDate | date_format }}
+              {% else -%}
+                Present
+              {%- endif -%}
+            </span>
+          </div>
+        {%- endfor -%}
+      </section>
+      <section class="mb-5">
+        <h2>Projects</h2>
+        <div class="row g-3">
+          {%- for project in data.projects -%}
+            <div class="col-md-6 col-12">
+              <div class="project-card d-flex flex-column h-100">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <h3 class="project-title fs-6">
+                    {%- if project.url -%}
+                      <a href="{{ project.url }}" target="_blank"
+                        >{{ project.name }}</a
+                      >
+                    {%- else -%}
+                      {{ project.name }}
+                    {%- endif -%}
+                  </h3>
+                  <!-- <span class="text-success small">● Active</span> -->
+                </div>
+                <p class="flex-grow-1">{{ project.summary }}</p>
+                <!-- <div class="mt-2">
                 <span class="badge-skill">JavaScript</span>
                 <span class="badge-skill">TypeScript</span>
               </div> -->
+              </div>
             </div>
-          </div>
-        {%- endfor -%}
-      </div>
-    </section>
-    <section>
-      <h2>Skills & Tools</h2>
-      <div class="d-flex flex-wrap">
-        {%- for skill in data.skills -%}
-          {%- for keyword in skill.keywords -%}<span class="badge-skill">{{ keyword }}</span>{%- endfor -%}
-        {%- endfor -%}
-      </div>
-    </section>
-  </main>
-</body>
+          {%- endfor -%}
+        </div>
+      </section>
+      <section>
+        <h2>Skills & Tools</h2>
+        <div class="d-flex flex-wrap">
+          {%- for skill in data.skills -%}
+            {%- for keyword in skill.keywords -%}
+              <span class="badge-skill">{{ keyword }}</span>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
