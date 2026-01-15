@@ -361,7 +361,11 @@
           >
             <div class="profile-wrapper">
               <img
-                src="{{ data.basics.image }}"
+                {% if data.basics.image %}
+                  src="{{ data.basics.image }}"
+                {% else %}
+                  src="me.png"
+                {% endif %}
                 alt="Hendra Manudinata"
                 class="profile-img"
               />

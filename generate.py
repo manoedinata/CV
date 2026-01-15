@@ -99,6 +99,7 @@ env.loader = FileSystemLoader(website_dir)
 env.variable_start_string = '{{'
 env.variable_end_string = '}}'
 generate_webpage(data, env, output_dir)
+shutil.copyfile(os.path.join(website_dir, 'me.png'), os.path.join(output_dir, 'me.png'))
 
 os.chdir(output_dir)
 os.remove("main.log")
