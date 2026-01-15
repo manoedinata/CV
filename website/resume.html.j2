@@ -819,7 +819,22 @@
       const htmlElement = document.documentElement;
 
       // Check Local Storage on Load
-      const currentTheme = localStorage.getItem("theme");
+      var currentTheme = localStorage.getItem("theme");
+
+      // if no preference, check system preference
+      if (!currentTheme) {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (prefersDark) {
+          localStorage.setItem("theme", "dark");
+          currentTheme = "dark";
+        } else {
+          localStorage.setItem("theme", "light");
+          currentTheme = "light";
+        }
+      }
+
       if (currentTheme === "dark") {
         htmlElement.setAttribute("data-theme", "dark");
         htmlElement.setAttribute("data-bs-theme", "dark"); // For Bootstrap components
