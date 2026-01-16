@@ -72,6 +72,29 @@
           color 0.3s ease;
       }
 
+      /* --- Navbar Toggler Customization --- */
+      /* Removes the border */
+      .navbar-toggler {
+        border: none;
+        box-shadow: none !important;
+      }
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      .navbar-toggler .toggler-icon-bars {
+        display: none;
+      }
+      .navbar-toggler .toggler-icon-close {
+        display: inline-block;
+      }
+      .navbar-toggler.collapsed .toggler-icon-bars {
+        display: inline-block;
+      }
+      .navbar-toggler.collapsed .toggler-icon-close {
+        display: none;
+      }
+
       /* --- Background Animation --- */
       .area {
         /* Gradient adapted for dark mode visibility */
@@ -527,12 +550,13 @@
       <div class="container">
         <a class="navbar-brand" href="#">ndra.</a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-bars toggler-icon-bars"></i>
+          <i class="fa-solid fa-x toggler-icon-close"></i>
         </button>
         <div
           class="collapse navbar-collapse justify-content-end"
