@@ -799,7 +799,11 @@
       <div class="container text-center">
         <div class="mb-4">
           {% for profile in data.basics.profiles %}
-            <a href="{{ profile.url }}" target="_blank" class="social-link">
+            <a
+              href="https://{{ profile.url }}"
+              target="_blank"
+              class="social-link"
+            >
               <i class="fab fa-{{ profile.network | lower }}"></i>
             </a>
           {% endfor %}
