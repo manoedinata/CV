@@ -4,13 +4,13 @@
     {<< vol.location | escape_tex >>}
     {<< vol.position | escape_tex >>}
     {<< vol.startDate | escape_tex | date_format >> --
-    {%- if vol.endDate -%}
+    {% if vol.endDate -%}
         << vol.endDate | escape_tex | date_format >>
-    {%- else -%}
+    {% else -%}
         Present
     {%- endif -%}
     }
     {
-    {% for detail in vol.highlights %}\item << detail | escape_tex>>{% endfor %}
+    {% for detail in vol.highlights %}\item << detail | escape_tex >>{% endfor %}
     }
 {%- endfor -%}

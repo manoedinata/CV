@@ -3,7 +3,8 @@
     \textbf{<< skill.name | escape_tex >>}:
     {% for keyword in skill.keywords -%}
         << keyword | escape_tex >>
-        {%- if not loop.last -%},
+        {%- if not loop.last -%}
+            ,
         {% endif -%}
     {%- endfor -%}
     \\

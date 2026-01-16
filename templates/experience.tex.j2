@@ -6,17 +6,19 @@
     {%- else -%}
         << job.name | escape_tex >>
     {%- endif -%}
-    }                           % Name
-    { << job.location | escape_tex >> }                       % Location
-    { << job.position | escape_tex >> }                       % Title
+    }
+    { << job.location | escape_tex >> }
+    { << job.position | escape_tex >> }
     { << job.startDate | escape_tex | date_format >> --
-    {%- if job.endDate -%}
+    {% if job.endDate -%}
         << job.endDate | escape_tex | date_format >>
-    {%- else -%}
+    {% else -%}
         Present
     {%- endif -%}
-    } % Date
+    }
     {
-    {%- for detail in job.highlights -%}\item << detail | escape_tex>>{%- endfor -%}
-        }
+    {%- for detail in job.highlights -%}
+        \item << detail | escape_tex>>
     {%- endfor -%}
+    }
+{%- endfor -%}

@@ -7,18 +7,20 @@
     {%- if edu.score -%}(Grade: << edu.score >>){%- endif -%}
         }
         {<< edu.startDate | escape_tex | date_format >> --
-        {%- if edu.endDate -%}
+        {% if edu.endDate -%}
             << edu.endDate | escape_tex | date_format >>
-        {%- else -%}
+        {% else -%}
             Present
         {%- endif -%}
         }
         {%- if edu.courses -%}
             {
-            {%- for detail in edu.courses -%}\item << detail | escape_tex>>{%- endfor -%}
-                }
-            {%- else -%}
-                {}
-            {%- endif -%}
-            {%- if not loop.last -%}\vspace{6pt}{%- endif -%}
+            {%- for detail in edu.courses -%}
+                \item << detail | escape_tex>>
             {%- endfor -%}
+            }
+        {%- else -%}
+            {}
+        {%- endif -%}
+        {%- if not loop.last -%}\vspace{6pt}{%- endif -%}
+        {%- endfor -%}
