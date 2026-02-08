@@ -7,7 +7,9 @@
 {% if data.basics.phone -%}
     \href{tel:<< data.basics.phone >>}{<< data.basics.phone >>} |
 {% endif -%}
-\href{https://<< data.basics.url >>}{<< data.basics.url >>} \\
+{% if data.basics.url -%}
+    \href{tel:<< data.basics.url >>}{<< data.basics.url >>} |
+{% endif -%}
 {%- for profile in data.basics.profiles -%}
     \href{https://<< profile.url >>}{<< profile.url >>}
     {%- if not loop.last %}
