@@ -33,7 +33,7 @@
         "Developed object tracking software with image processing technique using OpenCV",
         "Utilizing various approach to accurately measure an object distance in real-life based on camera image",
         "Developing Neural Network system to predict the next robot's decision",
-        "Created autonomous robot system & nodes using ROS 2 \"Humble\" framework",
+        "Created autonomous robot system & nodes using ROS/ROS 2 framework",
         "Built robot monitoring website to control & analyze robot's movement & command using Vue.js, Express.js, and ROSBridge"
       ]
     },
