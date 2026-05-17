@@ -79,12 +79,27 @@
       ]
     },
     {
+      "organization": "TEDxITS 2026",
+      "location": "Surabaya, Indonesia",
+      "position": "Backend Developer",
+      "url": "https://instagram.com/tedxits",
+      "startDate": "2026-03",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Developed a website to serve as the main platform for the TEDxITS event series using Go, Gin, and Fiber.",
+        "Designed core website structure including database, request handling, middlewares, and authentication for smooth operation and secure user access",
+        "Collaborated across staff and divisions to reach consensus on website development",
+        "Worked together on codebase using Git, GitHub, and ticketing system"
+      ]
+    },
+    {
       "organization": "A Renewable Agent (ARA) 7.0",
       "location": "Surabaya, Indonesia",
       "position": "Backend Developer",
       "url": "https://instagram.com/ara_its",
       "startDate": "2025-09",
-      "endDate": "",
+      "endDate": "2026-03",
       "summary": "",
       "highlights": [
         "Developed a website to serve as the main platform for the ARA 7.0 event series using Go, Gin, and GORM.",
@@ -99,7 +114,7 @@
       "position": "Backend Developer",
       "url": "https://inilho.its.ac.id",
       "startDate": "2025-09",
-      "endDate": "",
+      "endDate": "2026-03",
       "summary": "",
       "highlights": [
         "Developed a website to serve as the main platform for the Ini Lho ITS! 2026 event series using Go, Gin, and GORM.",
