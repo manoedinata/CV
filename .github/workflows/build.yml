@@ -1,0 +1,52 @@
+name: Build CV
+
+on:
+  push:
+    branches: [hendra]
+    paths-ignore:
+      - docs/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-cv
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install TeX Live and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-publishers fonts-liberation
+          fc-cache -f
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate CV
+        run: python generate.py
+
+      - name: Commit generated docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f docs
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Regenerate resume"
+            git push
+          fi
