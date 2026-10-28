@@ -1,14 +1,12 @@
-\newcommand{\project}[4]{
+\newcommand{\project}[4]{%
   \noindent \textbf{#1} \hfill \textit{#2} \\
   \vspace{3pt}
   \noindent #3
 
-  \notblank{#4}{
-    \vspace{3pt}
-    Link: \href{#4}{#4}
-  }{
-    % You can leave this blank, or add a small \vspace if needed.
-  }
+  \notblank{#4}{%
+    \par\vspace{3pt}
+    Link: #4
+  }{}
 
-  \vspace{6pt}
+  \par\vspace{6pt}
 }

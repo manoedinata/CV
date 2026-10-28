@@ -1,15 +1,10 @@
-\noindent
 {%- for project in data.projects -%}
     \project
     {<< project.name | escape_tex >>}
-    {<< project.startDate | escape_tex | date_format >>
-    {%- if project.endDate -%}
-        -- << project.endDate | escape_tex | date_format >>
-    {%- endif -%}
-    }
+    {<< project.startDate | escape_tex | date_format >>{% if project.endDate %} -- << project.endDate | escape_tex | date_format >>{% endif %}}
     {<< project.description | escape_tex >>}
     {%- if project.url -%}
-        {<< project.url | escape_tex >>}
+        {<< href(project.url) >>}
     {%- else -%}
         {}
     {%- endif -%}
