@@ -9,7 +9,6 @@ from jinja2 import FileSystemLoader
 
 from latex import escape_latex
 from latex import generate_latex
-from webpage import generate_webpage
 
 def date_format(date_str: str) -> str:
     """Convert date from 'YYYY-MM' to 'Month YYYY' format."""
@@ -22,7 +21,6 @@ def date_format(date_str: str) -> str:
 # Get current directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
 template_dir = os.path.join(current_dir, 'templates')
-website_dir = os.path.join(current_dir, 'website')
 
 
 output_dir = os.path.join(current_dir, 'docs')
@@ -92,19 +90,6 @@ except subprocess.CalledProcessError as e:
 except FileNotFoundError:
     print("Error: xelatex not found. Make sure TeX Live or MiKTeX is installed and on your PATH.")
 
-
-# Generate the Webpage
-env.loader = FileSystemLoader(website_dir)
-env.variable_start_string = '{{'
-env.variable_end_string = '}}'
-generate_webpage("resume", data, env, output_dir)
-generate_webpage("printable", data, env, output_dir)
-
-shutil.copyfile(os.path.join(website_dir, 'me.png'), os.path.join(output_dir, 'me.png'))
-with open(os.path.join(output_dir, 'CNAME'), "w") as cname:
-    cname.write(data["basics"]["url"].replace("https://", "").replace("http://", ""))
-with open(os.path.join(output_dir, '.nojekyll'), 'w') as nojekyll:
-    nojekyll.write("") # Create an empty .nojekyll file
 
 os.chdir(output_dir)
 os.remove("main.log")
