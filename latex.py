@@ -28,8 +28,10 @@ def href(url: str, text: str | None = None) -> str:
     """Render a \\href. Prepends https:// to URLs without a scheme."""
     if not SCHEME_PATTERN.match(url):
         url = f'https://{url}'
+    if text is None:
+        text = re.sub(r'^https?://', '', url)
     target = url.replace('%', r'\%').replace('#', r'\#')
-    return rf'\href{{{target}}}{{{escape_latex(text if text is not None else url)}}}'
+    return rf'\href{{{target}}}{{{escape_latex(text)}}}'
 
 def generate_latex(filename: str, env: Environment, template_dir: str, data: dict, output_dir: str | None = ""):
     if not output_dir: output_dir = template_dir
