@@ -42,6 +42,7 @@ jobs:
           sed -i 's/{Arial}/{Liberation Sans}/' templates/main.tex
           python generate.py
           test -f docs/resume.pdf
+          cp static/CNAME static/index.html docs/
 
       - name: Commit generated docs
         run: |
