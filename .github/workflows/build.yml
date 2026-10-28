@@ -38,8 +38,6 @@ jobs:
 
       - name: Generate CV
         run: |
-          # Arial is not available on the runner; use its metric-compatible stand-in
-          sed -i 's/{Arial}/{Liberation Sans}/' templates/main.tex
           python generate.py
           test -f docs/resume.pdf
           cp static/CNAME static/index.html docs/
