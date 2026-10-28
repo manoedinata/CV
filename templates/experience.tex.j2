@@ -2,14 +2,14 @@
     \entry
     {
     {%- if job.url -%}
-        \href{https://<< job.url >>}{<< job.name | escape_tex >>}
+        << href(job.url, job.name) >>
     {%- else -%}
         << job.name | escape_tex >>
     {%- endif -%}
     }
-    { << job.location | escape_tex >> }
-    { << job.position | escape_tex >> }
-    { << job.startDate | escape_tex | date_format >> --
+    {<< job.location | escape_tex >>}
+    {<< job.position | escape_tex >>}
+    {<< job.startDate | escape_tex | date_format >> --
     {% if job.endDate -%}
         << job.endDate | escape_tex | date_format >>
     {% else -%}

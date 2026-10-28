@@ -9,6 +9,7 @@ from jinja2 import FileSystemLoader
 
 from latex import escape_latex
 from latex import generate_latex
+from latex import href
 
 def date_format(date_str: str) -> str:
     """Convert date from 'YYYY-MM' to 'Month YYYY' format."""
@@ -51,6 +52,7 @@ env = Environment(
 # Custom filter
 env.filters['escape_tex'] = escape_latex
 env.filters['date_format'] = date_format
+env.globals['href'] = href
 
 
 ### HEADER

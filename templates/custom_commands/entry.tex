@@ -1,15 +1,12 @@
-\newcommand{\entry}[5]{
+\newcommand{\entry}[5]{%
   \noindent\textbf{#1} \hfill \textbf{#2} \\
-  % \noindent\textit{#3} \\
   \noindent\textit{#3} \hfill \textit{#4} \\
   \notblank{#5}{%
     \vspace{1pt}
     \begin{itemize}[noitemsep,topsep=0pt,leftmargin=1.5em]
       #5
     \end{itemize}
-  }{
-    % You can leave this blank, or add a small \vspace if needed.
-  }
+  }{}
 
-  \vspace{6pt}
+  \par\vspace{6pt}
 }

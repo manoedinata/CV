@@ -1,18 +1,17 @@
 {
-\Huge \textbf{ << data.basics.name >> }
+\Huge \textbf{ << data.basics.name | escape_tex >> }
 } \\
 \vspace{4pt}
-<< data.basics.location >> \\
-\href{mailto:<< data.basics.email >>}{<< data.basics.email >>} |
-{% if data.basics.phone -%}
-    \href{tel:<< data.basics.phone >>}{<< data.basics.phone >>} |
-{% endif -%}
-{% if data.basics.url -%}
-    \href{tel:<< data.basics.url >>}{<< data.basics.url >>} |
-{% endif -%}
+<< data.basics.location | escape_tex >> \\
+{%- set items = [] -%}
+{%- set _ = items.append(href('mailto:' ~ data.basics.email, data.basics.email)) -%}
+{%- if data.basics.phone -%}
+    {%- set _ = items.append(href('tel:' ~ data.basics.phone, data.basics.phone)) -%}
+{%- endif -%}
+{%- if data.basics.url -%}
+    {%- set _ = items.append(href(data.basics.url)) -%}
+{%- endif -%}
 {%- for profile in data.basics.profiles -%}
-    \href{https://<< profile.url >>}{<< profile.url >>}
-    {%- if not loop.last %}
-        |
-    {% endif -%}
-{%- endfor -%}
+    {%- set _ = items.append(href(profile.url)) -%}
+{%- endfor %}
+<< items | join(' | ') >>
